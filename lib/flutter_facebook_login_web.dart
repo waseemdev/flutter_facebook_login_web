@@ -33,8 +33,8 @@ class FacebookLoginWeb {
     return (await currentAccessToken)?.isValid() ?? false;
   }
 
-  Future<FacebookAccessToken> get currentAccessToken async {
-    Map accessToken = await _channel.invokeMethod('getCurrentAccessToken');
+  Future<FacebookAccessToken?> get currentAccessToken async {
+    Map? accessToken = await _channel.invokeMethod('getCurrentAccessToken');
 
     if (accessToken == null) {
       return null;
@@ -64,7 +64,7 @@ class FacebookLoginResult {
   ///
   /// Only available when the [status] equals [FacebookLoginStatus.loggedIn],
   /// otherwise null.
-  final FacebookAccessToken accessToken;
+  final FacebookAccessToken? accessToken;
 
   /// The error message when the log in flow completed with an error.
   ///

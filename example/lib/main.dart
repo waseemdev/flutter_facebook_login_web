@@ -23,11 +23,11 @@ class _MyAppState extends State<MyApp> {
 
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
-        final FacebookAccessToken accessToken = result.accessToken;
+        final FacebookAccessToken? accessToken = result.accessToken;
         _showMessage('''
          Logged in!
          
-         Token: ${accessToken.token}
+         Token: ${accessToken!.token}
          User id: ${accessToken.userId}
          ''');
 
@@ -65,11 +65,11 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: <Widget>[
               Text(_message),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: _login,
                 child: Text("Login with Facebook"),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: _logOut,
                 child: Text("Logout"),
               ),
